@@ -51,15 +51,15 @@ def home(request):
     user_game = home_helper.format_games_json(json.dumps(user_game_data), user.team_id)
 
     #data for player section
-    player_stats_temp = home_helper.get_player_stats(user.team)
+#    player_stats_temp = home_helper.get_player_stats(user.team)
 
-    for roster_player in Player.objects.get(team = user.team):
-        if player_stats_temp.get(roster_player.npa_api_id) == None:
-            player_stats_temp[roster_player.npa_api_id] = ["0:00", "0"]
+ #   for roster_player in Player.objects.get(team = user.team):
+   #     if player_stats_temp.get(roster_player.npa_api_id) == None:
+    #        player_stats_temp[roster_player.npa_api_id] = ["0:00", "0"]
     
-    player_stats = {}
-    for key, value in player_stats_temp:
-        player_stats[Player.objects.get(nba_api_id = key)] = value
+  #  player_stats = {}
+  #  for key, value in player_stats_temp:
+   #     player_stats[Player.objects.get(nba_api_id = key)] = value
 
 
     content = {
@@ -67,7 +67,7 @@ def home(request):
         'current_user': user,
         'general_game_data': general_games,
         'user_game_data': user_game,
-        'player_stats' : player_stats,
+ #       'player_stats' : player_stats,
         'range' : range(4)
     }
 
