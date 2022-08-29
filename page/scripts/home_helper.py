@@ -1,6 +1,7 @@
 import json
 import calendar
 import requests
+import secrets
 
 # accepts json and returns relevant data in list
 def format_games_json(games_list_in, team_id):
@@ -53,7 +54,7 @@ def get_player_stats(team_in):
     querystring = {"team":team_in.team_id, "season":"2021", "league":"standard"}
 
     headers = {
-        "X-RapidAPI-Key": "c96660af5dmsh0be727ff1538a07p13726ajsn551e28f3fd42",
+        "X-RapidAPI-Key": secrets.key,
         "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com"
     }
 
@@ -74,7 +75,7 @@ def get_player_stats(team_in):
     querystring = {"game":game_id}
 
     headers = {
-        "X-RapidAPI-Key": "c96660af5dmsh0be727ff1538a07p13726ajsn551e28f3fd42",
+        "X-RapidAPI-Key": secrets.key,
         "X-RapidAPI-Host": "api-nba-v1.p.rapidapi.com"
     }
 
