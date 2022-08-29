@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+    <head>
+        {% if title %}
+            <title>NBA Homepage - {{ title }}</title>
+        {% else %}
+            <title>NBA Homepage</title>
+        {% endif %}
+        <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    </head>
+    <body>
+        <div class="nav-bar-top">
+            <h1>
+                <a href="./">Basketball Spotlight</a>
+            </h1>
+
+            <h3>
+                <a href="./profile">{{ current_user.username }} </a>
+            </h3>
+        </div>
+        
+        <div class="nav-bar-bottom">
+            <ul>
+                <h3>
+                    <a href="./">Home</a>
+                </h3>
+
+                <h3>
+                    <a href="./Games">Games</a>
+                </h3>
+
+                <h3>
+                    <a href="./News">News</a>
+                </h3>
+                
+                <h3>
+                    <a href="./Forum">Forum</a>
+                </h3>
+            </ul>
+        </div>
+
+        {% block content %}{% endblock content %}
+        
+    </body>
+</html>

@@ -1,0 +1,117 @@
+{% extends "page/base.html" %}
+{% block content %}
+<div class="player-box">
+    <h2>
+        Players
+    </h2>    
+
+    <table>
+        <tr>
+            <th>Player</th>
+            <th>Minutes</th>
+            <th>Points</th>
+        </tr>
+
+        {% for player in player_stats %}
+
+            <tr>
+                <td>{{ player }}</td>
+                <td>{{ player_stats.player[0] }}</td>
+                <td>{{ player_stats.player[1] }}</td>
+            </tr>
+        {%  endfor %}
+
+    </table>
+
+</div>
+
+<div class="main-game-container">
+
+    <div class="main-game">
+        <h4> {{ user_game_data.month }} {{ user_game_data.day }}, {{user_game_data.year }}</h4>
+
+        <hr> </hr>
+        {% if user_game_data.user_is_home %}
+
+            <h3> {{ user_game_data.home }} vs {{ user_game_data.away }} </h3>
+
+            <h2> {{ user_game_data.home_score }} - {{user_game_data.away_score}} </h2>
+        {%  else %}
+
+            <h3> {{ user_game_data.away }} vs {{ user_game_data.home }}</h3>
+
+            <h2> {{ user_game_data.away_score }} - {{user_game_data.home_score}} </h2>
+
+        {% endif %}
+
+        {% if game.postseason %}
+            <h3> h3LAYOFF GAME </h3>
+        {% else %}
+            <h3> REGULAR SEASON </h3>
+        {% endif %}
+    </div>
+
+
+</div>
+
+<div class="other-games">
+    <ul>
+
+        {%  if general_game_data %}
+            {% for game in general_game_data %}
+                <li>
+                    <p> {{ game.home }} @ {{ game.away }} </p>
+                    <hr> </hr>
+                    <p> {{game.winner}} win</p>
+                    <p> {{ game.win_score }} - {{ game.lose_score }}</p>
+                    <hr> </hr>
+                    {% if game.postseason %}
+                        <p> PLAYOFF GAME </p>
+                    {% else %}
+                        <p> REGULAR SEASON </p>
+                    {% endif %}
+                </li>
+
+            {% endfor %}
+        {% else %}
+            {% for i in range %}
+                <li> <p>no games yeterday</p> </li>
+            {% endfor %}
+
+        {% endif %}
+        
+
+    </ul>
+</div>
+
+<div class="news-box">  
+    <h2>
+        news 
+    </h2>    
+
+    <table>
+
+        <tr>
+            <td>ESPN</td>
+            <td>Active</td>
+        </tr>
+
+        <tr>
+            <td>YAHOO</td>
+            <td>Active</td>
+        </tr>
+
+        <tr>
+            <td>NBC</td>
+            <td>Active</td>
+        </tr>
+
+
+    </table>
+
+</div>
+
+
+
+    
+{% endblock content%} 
